@@ -3,9 +3,9 @@ console.log("Beginning KeepAlive!");
 const {
 	API_URL,
 	API_ACCESS_KEY,
-	SCRAPE_CANARY_EVERY,
-	SCRAPE_PTB_EVERY,
-	SCRAPE_STABLE_EVERY,
+	SCRAPE_CANARY_EVERY = "15",
+	SCRAPE_PTB_EVERY = "15",
+	SCRAPE_STABLE_EVERY = "15",
 } = process.env as {
 	API_URL: string;
 	API_ACCESS_KEY: string;
