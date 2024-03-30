@@ -1,8 +1,17 @@
 console.log("Beginning KeepAlive!");
 
-const { API_URL, API_ACCESS_KEY } = process.env as {
+const {
+	API_URL,
+	API_ACCESS_KEY,
+	SCRAPE_CANARY_EVERY,
+	SCRAPE_PTB_EVERY,
+	SCRAPE_STABLE_EVERY,
+} = process.env as {
 	API_URL: string;
 	API_ACCESS_KEY: string;
+	SCRAPE_CANARY_EVERY: string;
+	SCRAPE_PTB_EVERY: string;
+	SCRAPE_STABLE_EVERY: string;
 };
 
 if (!API_URL || !API_ACCESS_KEY) {
@@ -23,15 +32,15 @@ async function scrape(releaseChannel: string) {
 const channels = [
 	{
 		channel: "stable",
-		every: 30_000, // 30 seconds
+		every: Number.parseInt(SCRAPE_STABLE_EVERY) * 1000, // 30 seconds
 	},
 	{
 		channel: "ptb",
-		every: 15_000, // 15 seconds
+		every: Number.parseInt(SCRAPE_PTB_EVERY) * 1000, // 15 seconds
 	},
 	{
 		channel: "canary",
-		every: 15_000, // 15 seconds
+		every: Number.parseInt(SCRAPE_CANARY_EVERY) * 1000, // 15 seconds
 	},
 ];
 
