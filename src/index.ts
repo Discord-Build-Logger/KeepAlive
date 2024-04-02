@@ -23,9 +23,7 @@ async function scrape(releaseChannel: string) {
 	url.searchParams.set("authorization", API_ACCESS_KEY);
 	url.searchParams.set("release_channel", releaseChannel);
 
-	const response = await fetch(url.toString(), {
-		redirect: "manual",
-	});
+	const response = await fetch(url.toString());
 
 	return response.ok;
 }
