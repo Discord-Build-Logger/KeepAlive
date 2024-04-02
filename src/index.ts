@@ -22,7 +22,6 @@ async function scrape(releaseChannel: string) {
 	const url = new URL(API_URL);
 	url.searchParams.set("authorization", API_ACCESS_KEY);
 	url.searchParams.set("release_channel", releaseChannel);
-	url.searchParams.set("wait", "false");
 
 	const response = await fetch(url.toString());
 
