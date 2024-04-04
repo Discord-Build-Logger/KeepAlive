@@ -25,21 +25,24 @@ async function scrape(releaseChannel: string) {
 
 	const response = await fetch(url.toString());
 
+	// consume the body
+	await response.text().catch(() => {});
+
 	return response.ok;
 }
 
 const channels = [
 	{
 		channel: "stable",
-		every: Number.parseInt(SCRAPE_STABLE_EVERY) * 1000, // 30 seconds
+		every: Number.parseInt(SCRAPE_STABLE_EVERY) * 1000,
 	},
 	{
 		channel: "ptb",
-		every: Number.parseInt(SCRAPE_PTB_EVERY) * 1000, // 15 seconds
+		every: Number.parseInt(SCRAPE_PTB_EVERY) * 1000,
 	},
 	{
 		channel: "canary",
-		every: Number.parseInt(SCRAPE_CANARY_EVERY) * 1000, // 15 seconds
+		every: Number.parseInt(SCRAPE_CANARY_EVERY) * 1000,
 	},
 ];
 
