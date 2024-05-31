@@ -1,17 +1,13 @@
 FROM node:22-alpine
 
-ENV NODE_ENV production
+WORKDIR /usr/app
 
-WORKDIR /usr/src/app
+COPY package.json .
+RUN npm install -g pnpm
+RUN pnpm install
 
-USER node
+RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 
 COPY . .
 
-RUN npm install --frozen-lockfile
-
-RUN npm run build
-
-EXPOSE 3000
-
-CMD npm run start
+CMD ["pnpm", "run", "start"]
