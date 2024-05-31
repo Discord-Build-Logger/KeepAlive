@@ -6,11 +6,13 @@
     "format": "biome format --write ./src",
     "lint": "biome lint ./src",
     "check": "biome check --apply ./src",
-    "build": "bun run ./build.ts"
+    "start": "tsx ./src/index.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.6.3",
-    "@types/bun": "latest"
+    "@types/node": "^20.12.14",
+    "tsx": "^4.11.0",
+    "typescript": "^5.4.5"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
